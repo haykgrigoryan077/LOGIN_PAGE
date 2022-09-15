@@ -1,0 +1,13 @@
+.button {
+    width: 100px;
+    background-color: rgb(156, 212, 34);
+    border-radius: 5px;
+    border: 2px solid black;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background-color: coral;
+    transition: 0.5s;
+    transform: scale(1.2);
+}

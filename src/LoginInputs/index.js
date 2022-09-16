@@ -6,7 +6,7 @@ import { emailsAndPasswords } from "../context/getEmailsAndPasswords";
 import { checkPassword } from "./checkData";
 import "./style.css";
 
-const LoginPageInputWrapper = ({ userInputSuccessModal, setUserInputSuccessModal}) => {
+const LoginPageInputWrapper = ({ setUserInputSuccessModal}) => {
   const [userEmailAndPass, setEmailAndPass] = useState({
     email: "",
     password: "",
@@ -22,7 +22,7 @@ const LoginPageInputWrapper = ({ userInputSuccessModal, setUserInputSuccessModal
   };
 
   return (
-    <div className="loginInputWrapper">
+    <form className="loginInputWrapper">
       <Input
         type='text'
         placeholder="email"
@@ -44,27 +44,27 @@ const LoginPageInputWrapper = ({ userInputSuccessModal, setUserInputSuccessModal
         onClick={() => {
           console.log(userEmailAndPass);
           console.log(userEmailAndPass);
-          setIsDisabled(!isDisabled);
-
+          
           if (
             checkPassword(
               emailsAndPasswords,
               userEmailAndPass.email,
               userEmailAndPass.password
-            )
-          ) {
-            setUserInputSuccessModal(
-              checkPassword(
-                emailsAndPasswords,
-                userEmailAndPass.email,
-                userEmailAndPass.password
               )
-            );
+              ) {
+                setUserInputSuccessModal(
+                  checkPassword(
+                    emailsAndPasswords,
+                    userEmailAndPass.email,
+                    userEmailAndPass.password
+                    )
+                    );
+                    setIsDisabled(!isDisabled);
           }
         }}
         disabled={isDisabled}
       />
-    </div>
+    </form>
     
   );
 };

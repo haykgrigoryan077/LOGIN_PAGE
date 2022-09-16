@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Popup from "../../components/Popup";
+import SuccessLogin from "../../components/SuccessLogin";
 import ForgetPassInputs from "../../ForgetPassInputs";
 import LoginPageInputWrapper from "../../LoginInputs";
 import "./style.css";
@@ -25,15 +26,18 @@ const MainPage = () => {
         userInputSuccessModal={userInputSuccessModal}
         setUserInputSuccessModal={setUserInputSuccessModal}
       />
-      <Button
-        text="Forgot Password?"
-        onClick={() => {
-          handlePassForgot();
-        }}
-        disabled={false}
-      />
+      {!userInputSuccessModal && (
+        <Button
+          text="Forgot Password?"
+          onClick={() => {
+            handlePassForgot();
+            // setUserInputSuccessModal(!userInputSuccessModal);
+          }}
+          disabled={false}
+        />
+      )}
       {userInputSuccessModal && (
-        <Popup>
+        <Popup className="successModal">
           <h1>Success</h1>
         </Popup>
       )}
